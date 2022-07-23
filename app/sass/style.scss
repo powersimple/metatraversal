@@ -13,7 +13,7 @@ DO NOT EDIT IN STYLE.CSS
 /*
     PUT YOUR COLOR PALETTE HERE:
 */
-@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Goldman&display=swap');
     @import "partials/reset";
     @import "partials/colors";
     @import "partials/typography";
@@ -216,7 +216,7 @@ DO NOT EDIT IN STYLE.CSS
 
     html,
     body {
-        background:url(images/bg/blueskybox.jpg) center   center #000;
+        background:url(images/bg/bg.jpg) center center #000;
         min-height: 100vh;
         display: block;
         max-width:100%; 
@@ -226,7 +226,11 @@ DO NOT EDIT IN STYLE.CSS
     
     html {
         overflow-x: hidden;
- 
+        background:url(images/bg/bg.jpg) center center no-repeat #000;
+        background-size: cover;
+    }
+    body{
+       
     }
     
 
@@ -1496,7 +1500,7 @@ General Styles - Owlcarousel
         background-position: center center;
         width: 100%;
         z-index: 0;
-        height:50vh;
+        height:85vh;
     }
     
     .titan-title-size-1 {
@@ -3355,5 +3359,13 @@ ul.nominee-list li{
     }
     a:visited{
         color:#aaa;
+    }
+}
+.menutraversal{
+    background: rgb(91,22,9);
+background: linear-gradient(0deg, rgba(91,22,9,1) 0%, rgba(192,65,37,1) 25%, rgba(226,231,174,1) 50%, rgba(192,65,37,1) 75%, rgba(91,22,9,1) 100%) !important;
+    a{
+        background: transparent !important;
+        width:100% !important;
     }
 }

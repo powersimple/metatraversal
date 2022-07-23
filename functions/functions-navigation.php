@@ -53,9 +53,9 @@
 		}
 		return $child_list;
     }
-    
-
-
+    function get_menu_slug($menu_name){
+		return	get_term_by('name',$menu_name,'nav_menu')->slug;
+	}
     function linkThis($url,$label,$blank_target=true){
         $target = '';  
         $absolute = '';
@@ -123,7 +123,7 @@
 				$menu[$m->ID]['ID'] = $m->ID;
 				$menu[$m->ID]['title'] = $m->title;
 				$menu[$m->ID]['content'] = $post->post_content;
-				
+				$menu[$m->ID]['attr'] = $m->attr_title;
 				$menu[$m->ID]['slug'] = $post->post_name;
 				
 				$menu[$m->ID]['url'] = $m->url;
@@ -131,6 +131,7 @@
 				$menu[$m->ID]['description'] = $m->description;//coords
 				$menu[$m->ID]['coords'] = $m->_coords;
 				$menu[$m->ID]['duration'] = $m->_duration;
+				$menu[$m->ID]['embed'] = $m->_embed;
 				$menu[$m->ID]['post'] = $post;
 				$menu[$m->ID]['post_type'] = $m->object;
 				$menu[$m->ID]['meta'] = $meta;
@@ -188,6 +189,121 @@
 * @params obj $item - the menu item
 * @params array $args
 */
+
+
+
+
+
+
+
+
+
+
+function kia_custom_fields_embed( $item_id, $item ) {
+
+	wp_nonce_field( '_embed_nonce', '_embed_nonce_name' );
+	$_embed = get_post_meta( $item_id, '_embed', true );
+	?>
+	<div class="field-_embed description-wide" style="margin: 5px 0;">
+	    <span class="description"><?php _e( "Embed", 'Embed URL with Nav item' ); ?></span>
+	    <br />
+
+	    <input type="hidden" class="nav-menu-id" value="<?php echo $item_id ;?>" />
+
+	    <div class="logged-input-holder">
+	        <input type="text" name="_embed[<?php echo $item_id ;?>]" id="custom-menu-meta-for-<?php echo $item_id ;?>" size="40" value="<?php echo esc_attr( $_embed ); ?>" />
+	      
+	    </div>
+
+	</div>
+
+	<?php
+}
+add_action( 'wp_nav_menu_item_custom_fields', 'kia_custom_fields_embed', 10, 2 );
+
+/**
+* COORDINATESave the menu item meta
+* 
+* @param int $menu_id
+* @param int $menu_item_db_id	
+*/
+function kia_nav_update_embed( $menu_id, $menu_item_db_id ) {
+
+	// Verify this came from our screen and with proper authorization.
+	if ( ! isset( $_POST['_embed_nonce_name'] ) || ! wp_verify_nonce( $_POST['_embed_nonce_name'], '_embed_nonce' ) ) {
+		return $menu_id;
+	}
+
+	if ( isset( $_POST['_embed'][$menu_item_db_id]  ) ) {
+		$sanitized_data = $_POST['_embed'][$menu_item_db_id];
+		update_post_meta( $menu_item_db_id, '_embed', $sanitized_data );
+	} else {
+		delete_post_meta( $menu_item_db_id, '_embed' );
+	}
+}
+add_action( 'wp_update_nav_menu_item', 'kia_nav_update_embed', 10, 2 );
+
+
+
+/**
+* Displays text on the front-end.
+*
+* @param string   $title The menu item's title.
+* @param WP_Post  $item  The current menu item.
+* @return string      
+*/
+function kia_custom_menu_title_embed( $title, $item ) {
+
+	if( is_object( $item ) && isset( $item->ID ) ) {
+
+		$_embed = get_post_meta( $item->ID, '_embed', true );
+
+		if ( ! empty( $_embed ) ) {
+			$title .= ' - ' . $_embed;
+		}
+	}
+	return $title;
+}
+add_filter( 'nav_menu_item_title', 'kia_custom_menu_title_embed', 10, 2 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function kia_custom_fields_coords( $item_id, $item ) {
 
 	wp_nonce_field( '_coords_nonce', '_coords_nonce_name' );
@@ -334,6 +450,11 @@ function kia_custom_menu_title_duration( $title, $item ) {
 	return $title;
 }
 add_filter( 'nav_menu_item_title', 'kia_custom_menu_title_duration', 10, 2 );
+
+
+
+
+
 
 
 

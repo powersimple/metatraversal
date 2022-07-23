@@ -17,8 +17,8 @@
     <a-assets timeout="800000">
         <!-- Loads assets -->
         <?php
-         
-            include "webxr/polys2/mixins.php";
+         include "webxr/metatraversal/assets.php";
+            include "webxr/metatraversal/mixins.php";
             
         ?>
 
@@ -26,8 +26,8 @@
     <a-sky src="#sky"></a-sky>
 
     <?php
-            include "webxr/polys2/rigging.php";
-            include "webxr/polys2/lights.php";
+            include "webxr/metatraversal/rigging.php";
+            include "webxr/metatraversal/lights.php";
 
 ?>
 <a-entity id="metatraversal" position="0.05 0 -21.2" rotation="0 0 0" scale="1 1 1" visible="true">

@@ -1,7 +1,7 @@
 #main-menu {
-    position: absolute;
+    position: absolute !important;
     width: 100%;
-
+    top:15px;
     nav{
         margin-right:60px;
     }
@@ -119,9 +119,9 @@
     .exo-menu>li>a.active,
     .exo-menu>li>a:hover,
     li.drop-down ul>li>a {
-        background: #009FE1;
+       width:100%;
         color: #fff;
-        text-shadow:1px 1px #000;
+        text-shadow:2px 2px #000;
     }
     li.drop-down::after {
         margin-right: 10px;

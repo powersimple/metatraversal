@@ -14,7 +14,7 @@ DO NOT EDIT IN STYLE.CSS
 /*
     PUT YOUR COLOR PALETTE HERE:
 */
-@import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow&family=Goldman&display=swap");
 html,
 body,
 div,
@@ -522,8 +522,9 @@ blockquote {
   padding-left: 25px; }
 
 #main-menu {
-  position: absolute;
-  width: 100%; }
+  position: absolute !important;
+  width: 100%;
+  top: 15px; }
   #main-menu nav {
     margin-right: 60px; }
   @media (min-width: 768px) {
@@ -622,9 +623,9 @@ blockquote {
   #megamenu .exo-menu > li > a.active,
   #megamenu .exo-menu > li > a:hover,
   #megamenu li.drop-down ul > li > a {
-    background: #009FE1;
+    width: 100%;
     color: #fff;
-    text-shadow: 1px 1px #000; }
+    text-shadow: 2px 2px #000; }
   #megamenu li.drop-down::after {
     margin-right: 10px;
     border-bottom-left-radius: 10px;
@@ -895,8 +896,8 @@ blockquote {
 
 #logo {
   position: relative;
-  width: 130px;
-  background-image: url(images/logo/PolysLogo.png); }
+  width: 260px;
+  background-image: url(images/logo/logo.png); }
   @media (min-width: 768px) {
     #logo {
       top: -15px; } }
@@ -1306,10 +1307,11 @@ body::-webkit-scrollbar-thumb {
       max-width: 640px;
       margin: 0px auto; } }
   .title-bar h1.title {
+    font-family: 'Goldman';
     color: #fff;
     text-align: center;
-    text-transform: uppercase;
-    padding: 10px 0px 5px; }
+    padding: 10px 0px 5px;
+    font-weight: normal; }
   .title-bar h2.featuring {
     color: #fff;
     font-size: 1.2rem;
@@ -3362,7 +3364,7 @@ select.wpcf7-form-control.wpcf7-select {
 
 html,
 body {
-  background: url(images/bg/blueskybox.jpg) center center #000;
+  background: url(images/bg/bg.jpg) center center #000;
   min-height: 100vh;
   display: block;
   max-width: 100%;
@@ -3370,7 +3372,9 @@ body {
   font: 400 1rem/1.8 'Montserrat', sans-serif; }
 
 html {
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  background: url(images/bg/bg.jpg) center center no-repeat #000;
+  background-size: cover; }
 
 img {
   max-width: 100%;
@@ -4429,7 +4433,7 @@ General Styles - Owlcarousel
   background-position: center center;
   width: 100%;
   z-index: 0;
-  height: 50vh; }
+  height: 85vh; }
 
 .titan-title-size-1 {
   letter-spacing: 4px;
@@ -5959,3 +5963,10 @@ ul.nominee-list li {
 
 #nomineeAccordion a:visited {
   color: #aaa; }
+
+.menutraversal {
+  background: #5b1609;
+  background: linear-gradient(0deg, #5b1609 0%, #c04125 25%, #e2e7ae 50%, #c04125 75%, #5b1609 100%) !important; }
+  .menutraversal a {
+    background: transparent !important;
+    width: 100% !important; }

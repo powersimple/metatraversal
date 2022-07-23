@@ -5,6 +5,8 @@ require_once("functions/functions-enqueue.php");
 require_once("functions/functions-ballot.php");
 require_once("functions/metaboxes-aframe.php");
 
+require_once("functions/functions-virtual-production.php");
+
 require_once("functions/functions-metabox.php");
 
 

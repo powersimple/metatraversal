@@ -65,6 +65,10 @@ function setVideoPath(video_path) {
 function initSite() {
     megaMenu()
    // sponsorFooter()
+    var thisURLArray = window.location.href.split("/")
+    var this_slug = thisURLArray.length-1;
+    var this_menu = thisURLArray[this_slug-1]
+    console.log("LOCATION",this_menu, menus);
 
     getVideo();
 

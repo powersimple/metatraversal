@@ -52,7 +52,8 @@ if($post->post_parent==0){
     <div class="post">
 
 <?php
-
+//get_profilesFromTable(0);
+//  match_profilesFromTable('_profile_import');
   print do_blocks(do_shortcode($post->post_content));
 ?>
     </div>
